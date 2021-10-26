@@ -9,9 +9,9 @@ const client = new Client({
 let interval;
 client.on("message", async (msg) => {
   var welcome_dict = {
-    hi: "Chào mừng mừng anh đến với câu lạc bộ nhé.",
-    hello: "Chào anh nhé :>",
-    chào: "Hello anh :))",
+    "hi": "Chào mừng mừng anh đến với câu lạc bộ nhé.",
+    "hello": "Chào anh nhé :>",
+    "chào": "Hello anh :))",
   };
   if (msg.channel.name == "welcome") {
     for (var i = 0; i < welcome_dict.length; i++) {
