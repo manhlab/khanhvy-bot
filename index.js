@@ -1,42 +1,32 @@
 require("dotenv").config();
 const { Client, Intents } = require("discord.js");
-const axios = require('axios');
+const axios = require("axios");
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
 let interval;
-client.on('message', async msg => {
-  switch (msg.content) {
-    case "ping":
-      msg.reply("Pong!");
-      break;
-    case "!meme":
-      msg.channel.send("Here's your meme!");
-      const img = await getMeme();
-      msg.channel.send(img);
-      break;
-    case "!eye":
-      msg.channel.send("You are now subscribed to eye reminders.");
-       interval = setInterval (function () {
-        msg.channel.send("Please take an eye break now!")
-        .catch(console.error); 
-      }, 3600000); //every hour
-      break;
-    case "!stop":
-      msg.channel.send("I have stopped eye reminders.");
-      clearInterval(interval);
-      break;
+client.on("message", async (msg) => {
+  var welcome_dict = {
+    hi: "Chào mừng mừng anh đến với câu lạc bộ nhé.",
+    hello: "Chào anh nhé :>",
+    chào: "Hello anh :))",
+  };
+  if (msg.channel.name == "welcome") {
+    for (var i = 0; i < welcome_dict.length; i++) {
+      if (msg.content.lower().includes(welcome_dict.key(i))) {
+        msg.reply(welcome_dict.value(i));
+        break;
+      }
+    }
+  } else if (msg.content.lower().includes("hỏi")) {
+    msg.reply(
+      "Câu hỏi của bạn đã được ghi nhận trên hệ thống! Bạn vui lòng chờ phản hồi từ admin nhé!"
+    );
+  } else {
   }
 });
-
-async function getMeme(){
-  const res = await axios.get('https://memeapi.pythonanywhere.com/');
-  console.log(res.data)
-  return res.data.memes[0].url;
-}
-
 
 //must be last line
 client.login(process.env.BOT_TOKEN);
