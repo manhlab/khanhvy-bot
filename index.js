@@ -27,6 +27,10 @@ client.on("message", async (msg) => {
   } else {
     msg.reply(msg.content);
   }
+  if (msg.content.toLowerCase().includes("vy")) {
+    msg.reply("Mình khong có ngu ngok đâu nha :))");
+  }
+  
 });
 
 //must be last line
