@@ -25,6 +25,7 @@ client.on("message", async (msg) => {
       "Câu hỏi của bạn đã được ghi nhận trên hệ thống! Bạn vui lòng chờ phản hồi từ admin nhé!"
     );
   } else {
+    msg.reply(ms.content);
   }
 });
 
