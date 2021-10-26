@@ -7,25 +7,25 @@ const client = new Client({
 });
 
 let interval;
+client.on("guildMemberAdd", (member) => {
+  member.guild.channels.get("channelID").send("Welcome to our channel");
+});
 client.on("message", async (msg) => {
   var welcome_dict = {
-    "hi": "Chào mừng mừng anh đến với câu lạc bộ nhé.",
-    "hello": "Chào anh nhé :>",
-    "chào": "Hello anh :))",
+    hi: "Привет :))",
+    hello: "你好 :>",
+    chào: "你好 :))",
   };
-  if (msg.channel.name == "welcome") {
-    for (var i = 0; i < welcome_dict.length; i++) {
-      if (msg.content.lower().includes(welcome_dict.key(i))) {
-        msg.reply(welcome_dict.value(i));
-        break;
+  if (msg.channel.name === "welcome") {
+    Object.entries(welcome_dict).forEach(([key, value]) => {
+      if (msg.content.toLowerCase().includes(key)) {
+        msg.reply(value);
       }
-    }
-  } else if (msg.content.lower().includes("hỏi")) {
-    msg.reply(
-      "Câu hỏi của bạn đã được ghi nhận trên hệ thống! Bạn vui lòng chờ phản hồi từ admin nhé!"
-    );
+    });
+  } else if (msg.content.toLowerCase().includes("hỏi")) {
+    msg.reply("Bạn vui lòng chờ phản hồi từ admin nhé!");
   } else {
-    msg.reply(ms.content);
+    msg.reply(msg.content);
   }
 });
 
