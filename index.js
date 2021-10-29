@@ -12,9 +12,9 @@ client.on("guildMemberAdd", (member) => {
 });
 client.on("message", async (msg) => {
   var welcome_dict = {
-    hi: "Привет :))",
-    hello: "你好 :>",
-    chào: "你好 :))",
+    hi: "hiii :>",
+    hello: "Chaoooo ban :>",
+    chào: "Hellllo nha :))",
   };
   if (msg.channel.name === "welcome") {
     Object.entries(welcome_dict).forEach(([key, value]) => {
@@ -24,9 +24,7 @@ client.on("message", async (msg) => {
     });
   } else if (msg.content.toLowerCase().includes("hỏi")) {
     msg.reply("Bạn vui lòng chờ phản hồi từ admin nhé!");
-  } else {
-    msg.reply(msg.content);
-  }
+  } 
   if (msg.content.toLowerCase().includes("vy")) {
     msg.reply("Mình khong có ngu ngok đâu nha :))");
   }
