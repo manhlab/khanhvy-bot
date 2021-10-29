@@ -8,7 +8,7 @@ const client = new Client({
 
 let interval;
 client.on("guildMemberAdd", (member) => {
-  member.guild.channels.get("channelID").send("Welcome to our channel");
+  member.guild.channels.get("welcome").send("Mình là Khánh Vy, đang học dự bị tại Bách Khoa. Mình phụ trách quản lý page. Rất vui được làm quen với bạn!");
 });
 client.on("message", async (msg) => {
   var welcome_dict = {
