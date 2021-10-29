@@ -30,6 +30,8 @@ client.on("message", async (msg) => {
   }
   
 });
-
+client.on('ready', () => {
+	console.log(`Logged in as ${client.user.username}!`);
+});
 //must be last line
 client.login(process.env.BOT_TOKEN);
