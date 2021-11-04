@@ -8,10 +8,9 @@ const client = new Client({
 
 let interval;
 client.on("guildMemberAdd", (member) => {
-  member.guild.channels
-    .get("welcome")
+  member.guild.channels.cache.get("902551310719651882")
     .send(
-      "Mình là Khánh Vy, đang học dự bị tại Bách Khoa. Mình phụ trách quản lý page. Rất vui được làm quen với bạn!"
+      " Xin chào <@${member.id}> to ITMO Brain. Mình là Khánh Vy, đang học dự bị tại Bách Khoa. Mình phụ trách quản lý page. Rất vui được làm quen với bạn!"
     );
 });
 client.on("message", async (msg) => {
